@@ -44,7 +44,7 @@ class ViewController: UITableViewController {
         
         return count
     }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // customize the appearance of table view cells
@@ -68,7 +68,7 @@ class ViewController: UITableViewController {
         {
             // Set up the cell...
             var appRecord: AppRecord = self.entries[indexPath.row] as AppRecord
-            cell.textLabel?.text = appRecord.appName
+            cell.textLabel.text = appRecord.appName
             cell.detailTextLabel?.text = appRecord.artist
             
             // Only load cached images; defer new downloads until scrolling ends
@@ -79,12 +79,12 @@ class ViewController: UITableViewController {
                 }
                 
                 // if a download is deferred or in progress, return a placeholder image
-                cell.imageView?.image = UIImage(named: "Placeholder.png")
+                cell.imageView.image = UIImage(named: "Placeholder.png")
 
             }
             else
             {
-                cell.imageView?.image = appRecord.appIcon
+                cell.imageView.image = appRecord.appIcon
             }
             
         }
@@ -96,7 +96,7 @@ class ViewController: UITableViewController {
     
     // -------------------------------------------------------------------------------
     //	startIconDownload:forIndexPath:
-    // -------------------------------------------------------------------------------
+    // ---- ---------------------------------------------------------------------------
     func startIconDownload(appRecord: AppRecord, indexPath: NSIndexPath) {
         var iconDownloader: IconDownloader? = self.imageDownloadsInProgress[indexPath]
         
@@ -107,7 +107,7 @@ class ViewController: UITableViewController {
                 let cell: UITableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as UITableViewCell!
                 
                 // Display the newly loaded image
-                cell.imageView?.image = appRecord.appIcon
+                cell.imageView.image = appRecord.appIcon
                 
                 // Remove the IconDownloader from the in progress list.
                 self.imageDownloadsInProgress[indexPath] = nil

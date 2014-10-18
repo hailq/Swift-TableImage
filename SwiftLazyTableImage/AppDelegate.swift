@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSURLConnectionDataDelega
         // Hide status bar
         UIApplication.sharedApplication().statusBarHidden = true
         
-        var urlRequest = NSURLRequest(URL: NSURL(string: TopPaidAppsFeed))
+        var urlRequest = NSURLRequest(URL: NSURL(string: TopPaidAppsFeed)!)
         self.appListFeedConnection = NSURLConnection(request: urlRequest, delegate: self)
         
         // Test the validity of the connection object. The most likely reason for the connection object
@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSURLConnectionDataDelega
     //	connection:didReceiveResponse:response
     // -------------------------------------------------------------------------------
     func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
-        self.appListData = NSMutableData.data() // start off with new data
+        self.appListData = NSMutableData()// start off with new data
     }
     
     // -------------------------------------------------------------------------------

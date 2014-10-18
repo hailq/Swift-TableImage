@@ -24,11 +24,11 @@ class IconDownloader: NSObject, NSURLConnectionDataDelegate {
     }
     
     func startDownload() {
-        self.activeDownload = NSMutableData.data()
-        var request: NSURLRequest = NSURLRequest(URL: NSURL(string: self.appRecord.imageURLString))
+        self.activeDownload = NSMutableData()
+        var request: NSURLRequest = NSURLRequest(URL: NSURL(string: self.appRecord.imageURLString)!)
         
         // alloc+init and start an NSURLConnection; release on completion/failure
-        var conn: NSURLConnection = NSURLConnection(request: request, delegate: self)
+        var conn: NSURLConnection = NSURLConnection(request: request, delegate: self)!
         
         self.imageConnection = conn
     }
@@ -52,7 +52,7 @@ class IconDownloader: NSObject, NSURLConnectionDataDelegate {
     func connectionDidFinishLoading(connection: NSURLConnection) {
         //Set appIcon and clear temporary data/image
         
-        var image: UIImage = UIImage(data: self.activeDownload!)
+        var image: UIImage = UIImage(data: self.activeDownload!)!
         var width = image.size.width
         var height = image.size.height
         
